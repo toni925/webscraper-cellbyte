@@ -82,7 +82,7 @@ class CDAReimbursementScraper:
         os.makedirs(self.pdf_cache_dir, exist_ok=True)
 
     def setup_browser(self):
-        """Setup undetected-chromedriver"""
+        """Setup simple undetected-chromedriver - WORKING VERSION"""
         if self.driver:
             return
 
@@ -97,6 +97,8 @@ class CDAReimbursementScraper:
                 options=options,
                 version_main=140
             )
+
+            logger.info("Simple ChromeDriver initialized successfully!")
 
             logger.info("ChromeDriver initialized successfully!")
 
@@ -324,14 +326,14 @@ class CDAReimbursementScraper:
         reports = []
         
         try:
-            self.setup_simple_browser()
+            self.setup_browser()
             
             # Go directly to the page
             logger.info(f"Navigating to: {self.find_reports_url}")
             self.driver.get(self.find_reports_url)
             
-            # Simple wait
-            time.sleep(10)
+            # Simple wait - extended for Cloudflare
+            time.sleep(15)
             
             # Check page title
             title = self.driver.title
