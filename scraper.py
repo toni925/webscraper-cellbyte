@@ -3,14 +3,6 @@
 Canadian Drug Agency (CDA) Reimbursement Data Scraper
 Web Scraping + PDF Processing + OpenAI Extraction
 
-PRODUCTION VERSION - Meets all requirements:
-- Scrapes CDA website for Reimbursement Review Reports only
-- Extracts: Brand Name, Generic Name, Therapeutic Area, Indication, Sponsor, 
-  Submission Date, Recommendation Date, Recommendation Type, Rationale, Document Link
-- Focuses on "Recommendation and Reasons" documents
-- Extracts rationale from Summary section (eligibility & conditions)
-- Incremental updates with change detection
-- Robust error handling and logging
 """
 
 import os
@@ -89,8 +81,8 @@ class CDAReimbursementScraper:
         """Create necessary directories"""
         os.makedirs(self.pdf_cache_dir, exist_ok=True)
 
-    def setup_simple_browser(self):
-        """Setup simple undetected-chromedriver - WORKING VERSION"""
+    def setup_browser(self):
+        """Setup undetected-chromedriver"""
         if self.driver:
             return
 
@@ -106,7 +98,7 @@ class CDAReimbursementScraper:
                 version_main=140
             )
 
-            logger.info("Simple ChromeDriver initialized successfully!")
+            logger.info("ChromeDriver initialized successfully!")
 
         except Exception as e:
             logger.error(f"Failed to setup ChromeDriver: {e}")
@@ -327,7 +319,7 @@ class CDAReimbursementScraper:
             return {}
 
     def scrape_reports(self) -> List[Dict]:
-        """Scrape CDA website - SIMPLE WORKING VERSION"""
+        """Scrape CDA website"""
         logger.info("Starting simple CDA scraping...")
         reports = []
         
