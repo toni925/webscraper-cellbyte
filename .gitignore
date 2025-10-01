@@ -1,0 +1,52 @@
+# API Keys and Secrets
+env.dev
+.env
+*.env
+
+# OpenAI API Keys
+openai_api_key.txt
+
+# Output Files (optional - you can commit sample data)
+# cda_reimbursement_data.csv
+# changelog.txt
+
+# PDF Cache (large files)
+pdf_cache/
+*.pdf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.coverage
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Logs
+*.log
+logs/
+
+# Browser data
+chrome_profile/
+browser_data/
